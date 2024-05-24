@@ -46,6 +46,12 @@ def press_e():
     time.sleep(1.5)
     pyautogui.keyUp('e')
 
+def press_e_config():
+    print("กำลังกดปุ่ม e...")
+    pyautogui.keyDown('e')
+    time.sleep(0.7)
+    pyautogui.keyUp('e')
+
 def press_w():
     print("กำลังกดปุ่ม w...")
     pyautogui.keyDown('w')
@@ -55,7 +61,7 @@ def press_w():
 def press_wconfig():
     print("กำลังกดปุ่ม w...")
     pyautogui.keyDown('w')
-    time.sleep(2.2)
+    time.sleep(1.75)
     pyautogui.keyUp('w')
 
 def press_s():
@@ -88,11 +94,11 @@ def press_6():
     time.sleep(1)
     pyautogui.keyUp('6')
 
-def press_9():
-    print("กำลังกดปุ่ม 9...")
-    pyautogui.keyDown('9')
-    time.sleep(1.5)
-    pyautogui.keyUp('9')
+def press_5():
+    print("กำลังกดปุ่ม 5...")
+    pyautogui.keyDown('5')
+    time.sleep(0.5)
+    pyautogui.keyUp('5')
 
 def press_c():
     print("กำลังกดปุ่ม z...")
@@ -109,7 +115,7 @@ def press_c_camp():
 def press_0():
     print("กำลังกดปุ่ม 0...")
     pyautogui.keyDown('0')
-    time.sleep(0.2)
+    time.sleep(0.7)
     pyautogui.keyUp('0')
 
 def press_space():
@@ -141,13 +147,14 @@ def create_turret():
             break
         except pyautogui.ImageNotFoundException:
             print("ไม่พบรูปภาพที่ต้องการคลิก")
-            time.sleep(0.5)
+            time.sleep(0.3)
             pyautogui.dragTo(96, 963, 0.2)
 
     if target_position is not None:
         # คลิกที่ตำแหน่ง
         print("พบปืน")
         pyautogui.click(target_position)
+        
     else:
         # เรียกใช้ข้อยกเว้น ImageNotFoundException เมื่อไม่พบรูปภาพ
         raise ImageNotFoundException("ไม่พบรูปภาพที่ต้องการคลิก")
@@ -326,13 +333,15 @@ def main():
     except ImageNotFoundException as e:
         print(e)
 
-    time.sleep(2.5)
-
-    press_q()
-
     time.sleep(0.5)
 
     press_sync()
+
+    time.sleep(0.5)
+
+    press_q()
+
+    time.sleep(2)
 
     try:
         create_turret()
@@ -343,36 +352,25 @@ def main():
 
     press_wconfig()
 
-    try:
-        create_turret()
-    except ImageNotFoundException as e:
-        print(e)
-
-    time.sleep(2.5)
-
-    press_q()
-
     press_reload()
 
     create_autogun()
     time.sleep(0.5)
     press_sync()
+
+    press_e_config()
     
-    time.sleep(3)
-
-    press_c()
-
-    press_space()
+    time.sleep(8)
 
     press_6()
 
-    press_9()
+    press_space()
+
+    press_5()
 
     press_0()
 
     print("จบด่านเสร็จสิ้น")
-
-
 
     end()
     
